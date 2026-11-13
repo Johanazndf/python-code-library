@@ -1,0 +1,54 @@
+# HTTP/HTTPS code retrieval — no pip installation required.
+# Replace USERNAME and REPOSITORY with your public GitHub repository details.
+# The repository must contain the 13 .py files in its root folder.
+
+from urllib.request import urlopen
+from urllib.error import URLError, HTTPError
+from IPython.display import display, Code
+
+BASE_URL = "https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/"
+
+# Original program numbers from the source notebook.
+PROGRAMS = {
+    "1": ("deep_forward_ann", "Deep Forward ANN", "deep_forward_ann.py"),
+    "2": ("mnist_deep_feedforward", "MNIST Deep Feedforward", "mnist_deep_feedforward.py"),
+    "3": ("fashion_mnist_cnn", "Fashion MNIST CNN", "fashion_mnist_cnn.py"),
+    "4.1": ("basic_cnn", "Basic CNN", "basic_cnn.py"),
+    "4.2": ("cnn_l1", "CNN with L1", "cnn_l1.py"),
+    "4.3": ("cnn_l2", "CNN with L2", "cnn_l2.py"),
+    "4.4": ("cnn_dropout", "CNN with Dropout", "cnn_dropout.py"),
+    "4.5": ("cnn_l2_dropout", "CNN with L2 + Dropout", "cnn_l2_dropout.py"),
+    "5": ("blip_image_captioning", "BLIP Image Captioning", "blip_image_captioning.py"),
+    "6": ("bidirectional_lstm", "Bidirectional LSTM", "bidirectional_lstm.py"),
+    "7": ("mnist_autoencoder", "MNIST Autoencoder", "mnist_autoencoder.py"),
+    "8": ("mnist_gan", "MNIST GAN", "mnist_gan.py"),
+    "10": ("simple_rnn", "Simple RNN", "simple_rnn.py"),
+}
+NAME_TO_ID = {name.lower(): pid for pid, (name, label, filename) in PROGRAMS.items()}
+LABEL_TO_ID = {label.lower(): pid for pid, (name, label, filename) in PROGRAMS.items()}
+
+def list_codes():
+    """List all programs using the original notebook numbering."""
+    for pid, (name, label, filename) in PROGRAMS.items():
+        print(f"Program {pid}: {label}  [{name}]")
+
+def get_code(program):
+    """Fetch and display one complete original program; does not execute it."""
+    key = str(program).strip().lower()
+    pid = key if key in PROGRAMS else NAME_TO_ID.get(key, LABEL_TO_ID.get(key))
+    if pid is None:
+        print("Program not found. Run list_codes() to see valid program numbers and names.")
+        return
+    name, label, filename = PROGRAMS[pid]
+    url = BASE_URL + filename
+    try:
+        with urlopen(url, timeout=25) as response:
+            source = response.read().decode("utf-8")
+        print(f"Program {pid}: {label}")
+        display(Code(source, language="python"))
+    except (HTTPError, URLError, TimeoutError, UnicodeDecodeError) as exc:
+        print("Could not retrieve the source code.")
+        print("Check internet access, the public GitHub repository, filename, branch, and BASE_URL.")
+        print("Details:", exc)
+
+print("Code retrieval is ready. Run list_codes() or get_code('4.1'), get_code(5), or get_code('cnn_l1').")

@@ -1,0 +1,80 @@
+[
+  {
+    "program_id": "1",
+    "name": "deep_forward_ann",
+    "label": "Deep Forward ANN",
+    "filename": "deep_forward_ann.py"
+  },
+  {
+    "program_id": "2",
+    "name": "mnist_deep_feedforward",
+    "label": "MNIST Deep Feedforward",
+    "filename": "mnist_deep_feedforward.py"
+  },
+  {
+    "program_id": "3",
+    "name": "fashion_mnist_cnn",
+    "label": "Fashion MNIST CNN",
+    "filename": "fashion_mnist_cnn.py"
+  },
+  {
+    "program_id": "4.1",
+    "name": "basic_cnn",
+    "label": "Basic CNN",
+    "filename": "basic_cnn.py"
+  },
+  {
+    "program_id": "4.2",
+    "name": "cnn_l1",
+    "label": "CNN with L1",
+    "filename": "cnn_l1.py"
+  },
+  {
+    "program_id": "4.3",
+    "name": "cnn_l2",
+    "label": "CNN with L2",
+    "filename": "cnn_l2.py"
+  },
+  {
+    "program_id": "4.4",
+    "name": "cnn_dropout",
+    "label": "CNN with Dropout",
+    "filename": "cnn_dropout.py"
+  },
+  {
+    "program_id": "4.5",
+    "name": "cnn_l2_dropout",
+    "label": "CNN with L2 + Dropout",
+    "filename": "cnn_l2_dropout.py"
+  },
+  {
+    "program_id": "5",
+    "name": "blip_image_captioning",
+    "label": "BLIP Image Captioning",
+    "filename": "blip_image_captioning.py"
+  },
+  {
+    "program_id": "6",
+    "name": "bidirectional_lstm",
+    "label": "Bidirectional LSTM",
+    "filename": "bidirectional_lstm.py"
+  },
+  {
+    "program_id": "7",
+    "name": "mnist_autoencoder",
+    "label": "MNIST Autoencoder",
+    "filename": "mnist_autoencoder.py"
+  },
+  {
+    "program_id": "8",
+    "name": "mnist_gan",
+    "label": "MNIST GAN",
+    "filename": "mnist_gan.py"
+  },
+  {
+    "program_id": "10",
+    "name": "simple_rnn",
+    "label": "Simple RNN",
+    "filename": "simple_rnn.py"
+  }
+]
